@@ -1,0 +1,35 @@
+<li>
+    <i class="fas fa-certificate" aria-hidden="true"></i>
+    <div>
+      <h3>Certificación en Desarrollo Web Full Stack</h3>
+      <span>Platzi (2020)</span>
+      <p>Curso intensivo cubriendo tecnologías como JavaScript, Node.js, React y bases de datos NoSQL.</p>
+    </div>
+  </li>
+</ul>
+</section>
+<section id="personal" aria-label="Sección Personal">
+<h2>Personal</h2>
+<p>Me encanta aprender nuevas tecnologías y participar en proyectos colaborativos. Fuera del trabajo disfruto del ciclismo urbano y la fotografía digital.</p>
+</section>
+</main>
+<footer>
+&copy; 2024 Juan Pérez - Desarrollador Web
+</footer>
+<script>
+// Responsive nav toggle for small screens
+const menuToggle = document.getElementById('menu-toggle');
+const navList = document.getElementById('nav-list');
+menuToggle.addEventListener('click', () => {
+navList.classList.toggle('open');
+});
+// Accessibility keyboard toggle
+menuToggle.addEventListener('keydown', (e) => {
+if (e.key === 'Enter' || e.key === ' ') {
+  e.preventDefault();
+  navList.classList.toggle('open');
+}
+});
+</script>
+</body>
+</html>
