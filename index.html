@@ -1,35 +1,397 @@
-<li>
-    <i class="fas fa-certificate" aria-hidden="true"></i>
-    <div>
-      <h3>Certificación en Desarrollo Web Full Stack</h3>
-      <span>Platzi (2020)</span>
-      <p>Curso intensivo cubriendo tecnologías como JavaScript, Node.js, React y bases de datos NoSQL.</p>
-    </div>
-  </li>
-</ul>
-</section>
-<section id="personal" aria-label="Sección Personal">
-<h2>Personal</h2>
-<p>Me encanta aprender nuevas tecnologías y participar en proyectos colaborativos. Fuera del trabajo disfruto del ciclismo urbano y la fotografía digital.</p>
-</section>
-</main>
-<footer>
-&copy; 2024 Juan Pérez - Desarrollador Web
-</footer>
-<script>
-// Responsive nav toggle for small screens
-const menuToggle = document.getElementById('menu-toggle');
-const navList = document.getElementById('nav-list');
-menuToggle.addEventListener('click', () => {
-navList.classList.toggle('open');
-});
-// Accessibility keyboard toggle
-menuToggle.addEventListener('keydown', (e) => {
-if (e.key === 'Enter' || e.key === ' ') {
-  e.preventDefault();
-  navList.classList.toggle('open');
-}
-});
-</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio Personal - Desarrollador</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Root and base */
+    :root {
+      --black: #0a0a0a;
+      --dark-gray: #1a1a1a;
+      --gray: #333333;
+      --light-gray: #555555;
+      --accent: #222222;
+      --white: #f9f9f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--light-gray);
+    }
+
+    header {
+      background-color: var(--dark-gray);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+    }
+
+    nav li {
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    nav li::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--white);
+      transition: width .3s;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+    }
+
+    nav li:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Section titles */
+    section h2 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    /* Inicio Section */
+    #inicio {
+      text-align: center;
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+
+    #inicio img.profile {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 4px #333);
+    }
+
+    #inicio h2 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1.5px;
+    }
+
+    #inicio p {
+      font-size: 1.2rem;
+      color: var(--light-gray);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Proyectos Section */
+    #proyectos .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.9);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      margin-bottom: 0.8rem;
+      border: 1.5px solid var(--gray);
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: var(--white);
+    }
+
+    .project-card p {
+      flex-grow: 1;
+      color: var(--light-gray);
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-card a {
+      align-self: flex-start;
+      font-weight: 700;
+      background-color: var(--black);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      box-shadow: 0 0 6px #fff9;
+      transition: background-color 0.3s;
+    }
+
+    .project-card a:hover {
+      background-color: var(--gray);
+    }
+
+    /* Experiencia Académica Section */
+    #experiencia-academica ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #experiencia-academica li {
+      background-color: var(--accent);
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    #experiencia-academica li i {
+      font-size: 2rem;
+      color: var(--light-gray);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    #experiencia-academica li div {
+      flex-grow: 1;
+      color: var(--white);
+    }
+
+    #experiencia-academica li div h3 {
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    #experiencia-academica li div span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--light-gray);
+      margin-bottom: 0.6rem;
+      font-style: italic;
+    }
+
+    /* Sección Personal */
+    #personal p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: var(--light-gray);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-gray);
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-top: auto;
+      user-select: none;
+    }
+
+    /* Responsive Navigation */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        background-color: var(--dark-gray);
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 180px;
+        border-left: 1px solid var(--gray);
+        padding: 1rem 1rem;
+        display: none;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      #menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--white);
+      }
+    }
+
+    /* Menu toggle hidden on desktop */
+    #menu-toggle {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi Portafolio</h1>
+    <nav>
+      <i id="menu-toggle" class="fas fa-bars" aria-label="toggle menu" tabindex="0"></i>
+      <ul id="nav-list">
+        <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="#proyectos"><i class="fas fa-code"></i> Proyectos</a></li>
+        <li><a href="#experiencia-academica"><i class="fas fa-graduation-cap"></i> Experiencia Académica</a></li>
+        <li><a href="#personal"><i class="fas fa-user"></i> Personal</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" aria-label="Sección Inicio">
+      <img src="https://i.pravatar.cc/160" alt="Foto de perfil" class="profile" />
+      <h2>Juan Pérez</h2>
+      <p>Desarrollador web apasionado especializado en frontend y backend, creando aplicaciones web modernas y eficientes con un diseño limpio y funcional.</p>
+    </section>
+
+    <section id="proyectos" aria-label="Sección Proyectos">
+      <h2>Proyectos</h2>
+      <div class="project-list">
+        <article class="project-card">
+          <img src="https://via.placeholder.com/400x220?text=Proyecto+1" alt="Imagen del Proyecto 1" />
+          <h3>Proyecto Uno</h3>
+          <p>Aplicación web para gestión de tareas con funcionalidades avanzadas de filtro y notificaciones en tiempo real.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+        </article>
+        <article class="project-card">
+          <img src="https://via.placeholder.com/400x220?text=Proyecto+2" alt="Imagen del Proyecto 2" />
+          <h3>Proyecto Dos</h3>
+          <p>Plataforma e-commerce creada con React y Node.js, con integración de pasarelas de pago y panel administrativo.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+        </article>
+        <article class="project-card">
+          <img src="https://via.placeholder.com/400x220?text=Proyecto+3" alt="Imagen del Proyecto 3" />
+          <h3>Proyecto Tres</h3>
+          <p>Portfolio interactivo con gráficos dinámicos y animaciones para mostrar habilidades y experiencias.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="experiencia-academica" aria-label="Sección Experiencia Académica">
+      <h2>Experiencia Académica</h2>
+      <ul>
+        <li>
+          <i class="fas fa-university" aria-hidden="true"></i>
+          <div>
+            <h3>Licenciatura en Ingeniería en Sistemas</h3>
+            <span>Universidad Nacional Autónoma de México (2015 - 2019)</span>
+            <p>Formación sólida en desarrollo de software, bases de datos, y gestión de proyectos.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-certificate" aria-hidden="true"></i>
+          <div>
+            <h3>Certificación en Desarrollo Web Full Stack</h3>
+            <span>Platzi (2020)</span>
+            <p>Curso intensivo cubriendo tecnologías como JavaScript, Node.js, React y bases de datos NoSQL.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="personal" aria-label="Sección Personal">
+      <h2>Personal</h2>
+      <p>Me encanta aprender nuevas tecnologías y participar en proyectos colaborativos. Fuera del trabajo disfruto del ciclismo urbano y la fotografía digital.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Juan Pérez - Desarrollador Web
+  </footer>
+
+  <script>
+    // Responsive nav toggle for small screens
+    const menuToggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('open');
+    });
+
+    // Accessibility keyboard toggle
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navList.classList.toggle('open');
+      }
+    });
+  </script>
 </body>
 </html>
+
